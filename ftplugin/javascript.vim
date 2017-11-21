@@ -11,7 +11,6 @@ iabbrev <silent> <buffer> if if ()<Left><C-R>=<SID>eatchar('\s')<CR>
 iabbrev <silent> <buffer> while while ()<Left><C-R>=<SID>eatchar('\s')<CR>
 iabbrev <silent> <buffer> do do {} while ();<Esc>F}i<CR><Esc>O<C-R>=<SID>eatchar('\s')<CR>
 iabbrev <silent> <buffer> switch switch ()<Left><C-R>=<SID>eatchar('\s')<CR>
-iabbrev <silent> <buffer> { {<CR>}<Esc>O<C-R>=<SID>eatchar('\s')<CR>
 iabbrev <silent> <buffer> [ []<Left><C-R>=<SID>eatchar('\s')<CR>
 iabbrev <silent> <buffer> ( ()<Left><C-R>=<SID>eatchar('\s')<CR>
 " iabbrev <silent> <buffer> ) )<C-R>=<SID>eatchar(')')<CR>
