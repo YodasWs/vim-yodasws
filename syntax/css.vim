@@ -3,7 +3,7 @@
 " Maintainer: "Samuel B Grundman" <sam+vim@yodas.ws>
 " URL: http://yodas.ws
 " Filenames: *.css
-" Last Change: 12 Jun 2017
+" Last Change: 21 Nov 2017
 
 " Don't run this file again!
 if exists("b:current_syntax")
@@ -31,7 +31,7 @@ syn match cssProp contained "\<text-indent:"he=e-1
 " Build Media Query Rule
 syn match cssMedia "@media\>" contained
 syn region cssMediaQueryList start="@media\>"hs=s end="[^#]{\@=" contains=cssMedia,cssMediaType,cssMediaError,cssMediaExp,cssMediaNot,cssMediaAnd,cssMediaComma,sassVariable nextgroup=cssMediaBlock skipwhite skipnl
-syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=cssTagName,cssError,cssComment,cssDefinition,cssURL,cssUnicodeEscape,cssIdentifier skipwhite skipnl
+syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass,cssSelectorOp,cssSelectorOp2,cssAttributeSelector fold skipwhite skipnl
 
 syn match cssMediaComma "," nextgroup=cssMediaType,cssMediaNot,cssMediaError,cssMediaExp skipwhite skipnl
 syn keyword cssMediaAnd contained and nextgroup=cssMediaExp,cssMediaNot skipwhite skipnl
@@ -48,7 +48,6 @@ syn match cssMediaFeat contained "\<display-mode\>"
 syn keyword cssMediaFeat contained scripting
 syn match cssMediaFeat contained "\<\(light-level\|inverted-colors\|update-frequency\)\>"
 syn match cssMediaFeat contained "\<overflow-\(inline\|block\)\>"
-syn match cssMediaFeatError contained "\<\(\(max\|min\)-\)\=device-\(width\|height\|aspect-ratio\)\>"
 
 syn keyword cssValueMedia contained landscape portrait
 
@@ -199,6 +198,7 @@ syn match cssError "\<font[-:]\@!"
 
 " Media Queries
 syn keyword cssMediaError contained aural braille embosed handheld only projection tv tty
+syn match cssMediaError contained "\<\(\(max\|min\)-\)\=device-\(width\|height\|aspect-ratio\)\>"
 
 """"""""""""""""""""""""""""""""""""""
 " Updated and New Highlighting Rules "
