@@ -181,6 +181,10 @@ syn keyword cssColor contained slategray slategrey snow springgreen steelblue ta
 syn keyword cssColor contained thistle tomato turquoise violet wheat
 syn keyword cssColor contained whitesmoke yellowgreen
 
+""""""""""""""
+" New Colors "
+syn keyword cssColor contained rebeccapurple
+
 """"""""""""""""""""""""""""""""
 " Generic CSS Block for @rules "
 syn region cssBlock transparent matchgroup=cssBraces start='{' end='}'
