@@ -7,13 +7,10 @@ func! s:eatchar(pat) abort
 endfunc
 
 " Syntax Code Completion
-iabbrev <silent> <buffer> if if ()<Left><C-R>=<SID>eatchar('\s')<CR>
-iabbrev <silent> <buffer> while while ()<Left><C-R>=<SID>eatchar('\s')<CR>
+iabbrev <silent> <buffer> if if (<C-R>=<SID>eatchar('\s')<CR>
+iabbrev <silent> <buffer> while while (<C-R>=<SID>eatchar('\s')<CR>
 iabbrev <silent> <buffer> do do {} while ();<Esc>F}i<CR><Esc>O<C-R>=<SID>eatchar('\s')<CR>
-iabbrev <silent> <buffer> switch switch ()<Left><C-R>=<SID>eatchar('\s')<CR>
-iabbrev <silent> <buffer> [ []<Left><C-R>=<SID>eatchar('\s')<CR>
-iabbrev <silent> <buffer> ( ()<Left><C-R>=<SID>eatchar('\s')<CR>
-" iabbrev <silent> <buffer> ) )<C-R>=<SID>eatchar(')')<CR>
+iabbrev <silent> <buffer> switch switch (<C-R>=<SID>eatchar('\s')<CR>
 
 " Wrap text in single quotes
 nnoremap <buffer> <localleader>' viw<Esc>a'<Esc>bi'<Esc>lel
