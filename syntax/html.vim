@@ -1,9 +1,7 @@
 " Vim syntax file
 " Language: HTML
 " Maintainer: "Samuel B Grundman" <sam+vim@yodas.ws>
-" URL: http://yodas.ws
-" Filenames: *.css
-" Last Change: 12 Jun 2017
+" Filenames: *.html
 
 " Obsolete Tags
 syn keyword htmlTagError contained center acronym blink font marquee
