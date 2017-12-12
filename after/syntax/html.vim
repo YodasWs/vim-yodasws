@@ -1,18 +1,26 @@
 " Vim syntax file
 " Language: HTML
 " Maintainer: "Samuel B Grundman" <sam+vim@yodas.ws>
-" URL: http://yodas.ws
 " Filenames: *.html
-" Last Change: 12 Jun 2017
 
-" Obsolete Tags
+" Obsolete Tags {{{1
 syn match   htmlTagN     contained +<\s*[-a-zA-Z0-9]\++hs=s+1 contains=htmlTagName,htmlSpecialTagName,@htmlTagNameCluster,htmlTagNameError
 syn match   htmlTagN     contained +</\s*[-a-zA-Z0-9]\++hs=s+2 contains=htmlTagName,htmlSpecialTagName,@htmlTagNameCluster,htmlTagNameError
 syn keyword htmlTagErrorName contained center acronym blink font marquee
+" }}}1
 
-" Highlight
-command! -nargs=+ HiLink hi def link <args>
+" SVG {{{1
+unlet b:current_syntax
+syn include @htmlSvg syntax/svg.vim
+syn region  htmlSvg start=+<svg\_[^>]*>+ keepend end=+</svg\_[^>]*>+ contains=@htmlSvg,htmlArg,htmlValue
+
+hi def link svgTag htmlTag
+hi def link svgEnd htmlTag
+hi def link htmlSvg Normal
+" }}}1
+
+" Highlight {{{1
 if !exists("html_no_rendering")
-	HiLink htmlTagErrorName Error
+	hi def link htmlTagErrorName Error
 endif
-delcommand HiLink
+" }}}1
