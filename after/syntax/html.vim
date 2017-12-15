@@ -15,14 +15,8 @@ syn keyword htmlTagNameError contained containedin=htmlTagN layer ilayer nolayer
 syn keyword htmlTagNameError contained containedin=htmlTagN blink marquee tt xmp
 
 " Obsolete Attributes {{{2
-syn clear htmlArgError
-syn keyword htmlArgError contained frameborder noresize pagex pagey above below
-syn keyword htmlArgError contained left top visibility clip noshade
-syn keyword htmlArgError contained bgcolor border bordercolor cellpadding cellspacing color face wrap nowrap usemap
-syn keyword htmlArgError contained height hspace marginheight marginwidth scrolling valign vlink vspace width
-syn match   htmlArgError contained "\<z-index\>"
 syn match   htmlArgError contained "\<margin\(bottom\|height\|left\|right\|top\|width\)\>"
-syn keyword htmlArgError contained align alink background rev
+syn keyword htmlArgError contained align alink background cellspacing rev
 
 " HTML5 {{{1
 syn keyword htmlTagName contained article aside figcaption figure footer header main nav section time
