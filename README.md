@@ -6,7 +6,7 @@ Making Vim so Much Easier!
 1. Go to `vimfiles` folder
 	```bash
 	# Linux
-	cd ~/.vim/vimfiles/
+	cd ~/.vim/
 	# Windows 10
 	cd /mnt/c/Users/[username]/vimfiles/
 	```
