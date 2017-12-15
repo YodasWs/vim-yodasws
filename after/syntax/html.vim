@@ -1,26 +1,43 @@
 " Vim syntax file
 " Language: HTML
 " Maintainer: "Samuel B Grundman" <sam+vim@yodas.ws>
-" Filenames: *.html
-
-" Obsolete Tags {{{1
-syn match   htmlTagN     contained +<\s*[-a-zA-Z0-9]\++hs=s+1 contains=htmlTagName,htmlSpecialTagName,@htmlTagNameCluster,htmlTagNameError
-syn match   htmlTagN     contained +</\s*[-a-zA-Z0-9]\++hs=s+2 contains=htmlTagName,htmlSpecialTagName,@htmlTagNameCluster,htmlTagNameError
-syn keyword htmlTagErrorName contained center acronym blink font marquee
-" }}}1
 
 " SVG {{{1
 unlet b:current_syntax
 syn include @htmlSvg syntax/svg.vim
-syn region  htmlSvg start=+<svg\_[^>]*>+ keepend end=+</svg\_[^>]*>+ contains=@htmlSvg,htmlArg,htmlValue
+syn region htmlSvg start=+<svg\_[^>]*>+ keepend end=+</svg\_[^>]*>+ fold contains=@htmlSvg
 
-hi def link svgTag htmlTag
-hi def link svgEnd htmlTag
-hi def link htmlSvg Normal
-" }}}1
+" Obsolete HTML {{{1
+" Obsolete Tags {{{2
+syn keyword htmlTagNameError contained containedin=htmlTagN acronym applet basefont big center font strike
+syn keyword htmlTagNameError contained containedin=htmlTagN frame noframes frameset nobr
+syn keyword htmlTagNameError contained containedin=htmlTagN layer ilayer nolayer spacer
+syn keyword htmlTagNameError contained containedin=htmlTagN blink marquee tt xmp
+
+" Obsolete Attributes {{{2
+syn clear htmlArgError
+syn keyword htmlArgError contained frameborder noresize pagex pagey above below
+syn keyword htmlArgError contained left top visibility clip noshade
+syn keyword htmlArgError contained bgcolor border bordercolor cellpadding cellspacing color face wrap nowrap usemap
+syn keyword htmlArgError contained height hspace marginheight marginwidth scrolling valign vlink vspace width
+syn match   htmlArgError contained "\<z-index\>"
+syn match   htmlArgError contained "\<margin\(bottom\|height\|left\|right\|top\|width\)\>"
+syn keyword htmlArgError contained align alink background rev
+
+" HTML5 {{{1
+syn keyword htmlTagName contained article aside figcaption figure footer header main nav section time
+syn keyword htmlTagName contained details mark menu menuitem meter output summary
+syn keyword htmlTagName contained audio embed picture source track video
+syn keyword htmlTagName contained ruby rp rt
+syn keyword htmlTagName contained bdi wbr datalist keygen svg canvas
+syn keyword htmlArg contained autocomplete autofocus placeholder list
+syn keyword htmlArg contained min max multiple pattern
+syn keyword htmlArg contained required spellcheck novalidate
+syn keyword htmlArg contained form formnovalidate formaction formenctype formmethod formtarget
+syn match   htmlArg contained "\<data-[0-9A-Za-z-]\+"
+
+" Microdata {{{1
+syn keyword htmlArg contained itemscope itemprop itemtype
 
 " Highlight {{{1
-if !exists("html_no_rendering")
-	hi def link htmlTagErrorName Error
-endif
-" }}}1
+hi def link htmlTagNameError Error
