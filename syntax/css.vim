@@ -1,9 +1,7 @@
 " Vim syntax file
 " Language: CSS
 " Maintainer: "Samuel B Grundman" <sam+vim@yodas.ws>
-" URL: http://yodas.ws
 " Filenames: *.css
-" Last Change: 21 Nov 2017
 
 " Don't run this file again!
 if exists("b:current_syntax")
@@ -120,7 +118,7 @@ syn keyword cssAttr contained dense
 
 """""""""""""""""""""""
 " Text Module Level 3 "
-syn match cssProp contained "\<text-align-last\>"
+syn match cssProp contained "\<\(text-align-last\|overflow-wrap\)\>"
 syn keyword cssAttr contained start end left right
 
 """"""""""""""""""
