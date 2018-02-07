@@ -72,6 +72,7 @@ syn keyword cssCommonAttr contained initial unset
 syn match cssAttr contained "\<\(border\|padding\|content\)-box\>"
 syn match cssAttr contained "\<\(min\|max\|fit\)-content\>"
 syn keyword cssAttr contained available
+syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|ch\|rem\|dpi\|dppx\|dpcm\|vh\|vw\|vmin\|vmax\)\>" contains=cssUnitDecorators
 
 """"""'""""
 " Cursors "
