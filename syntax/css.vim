@@ -74,7 +74,7 @@ syn match cssAttr contained "\<\(min\|max\|fit\)-content\>"
 syn keyword cssAttr contained available
 syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|ch\|rem\|dpi\|dppx\|dpcm\|vh\|vw\|vmin\|vmax\)\>" contains=cssUnitDecorators
 
-""""""'""""
+"""""""""""
 " Cursors "
 syn keyword cssAttr contained progress cell text vertical-text alias copy move
 syn match cssAttr contained "\<\(col\|row\|[nswe]\|[ns][ew]\|nesw\|nwse\)-resize\>"
@@ -207,11 +207,12 @@ if version >= 508
 	HiLink cssObsolete Error
 	HiLink cssError Error
 	HiLink cssMedia atRule
+	HiLink cssMediaExp Delimiter
 	HiLink cssMediaType Type
 	HiLink cssMediaComma Normal
 	HiLink cssMediaFeat StorageClass
-	HiLink cssMediaAnd Keyword
-	HiLink cssMediaNot Keyword
+	HiLink cssMediaAnd PreProc
+	HiLink cssMediaNot PreProc
 	HiLink cssMediaError Error
 	HiLink cssProp StorageClass
 	HiLink cssAttr Type
