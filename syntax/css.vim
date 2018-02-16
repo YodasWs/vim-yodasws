@@ -119,7 +119,8 @@ syn keyword cssAttr contained dense
 
 """""""""""""""""""""""
 " Text Module Level 3 "
-syn match cssProp contained "\<\(text-align-last\|overflow-wrap\)\>"
+syn keyword cssProp contained hyphens
+syn match cssProp contained "\<\(text-align-\(all\|last\)\|overflow-wrap\|line-break\|tab-size\)\>"
 syn keyword cssAttr contained start end left right
 
 """"""""""""""""""
