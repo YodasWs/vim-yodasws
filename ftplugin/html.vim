@@ -6,9 +6,6 @@ func! s:eatchar(pat) abort
   return (c =~ a:pat) ? '' : c
 endfunc
 
-" Replace -- with em dash
-iabbrev <silent> <buffer> -- &mdash;<C-R>=<SID>eatchar('\s')<CR>
-
 " Wrap text in double quotes
 nnoremap <buffer> <localleader>" viw<Esc>a"<Esc>bi"<Esc>lel
 vnoremap <buffer> <localleader>" <Esc>`>a"<Esc>`<i"<Esc>`>l
