@@ -1,9 +1,6 @@
-" Vim syntax file
+" Vim indent file
 " Language: HTML
-" Maintainer: "Samuel B Grundman" <sam+vim@yodas.ws>
-" URL: http://yodas.ws
-" Filenames: *.html
-" Last Change: 27 Aug 2017
+" Maintainer:	Sam Grundman <sam-vim@yodas.ws>
 
 let b:did_indent = 1
 set autoindent
