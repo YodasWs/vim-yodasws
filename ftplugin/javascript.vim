@@ -17,8 +17,8 @@ nnoremap <buffer> <localleader>' viw<Esc>a'<Esc>bi'<Esc>lel
 vnoremap <buffer> <localleader>' <Esc>`>a'<Esc>`<i'<Esc>`>l
 
 " Add/Remove Line Comment
-nnoremap <buffer> <localleader>c v3l<Esc>I// <Esc>`>
-nnoremap <buffer> <localleader>C v3h<Esc>:s/^\(\s*\)\/\/\s\?/\1/<CR>:nohlsearch<CR>`<
+nnoremap <buffer> <localleader>c m<m><Esc>I// <Esc>`>
+nnoremap <buffer> <localleader>C m<m><Esc>:s/^\(\s*\)\/\/\s\?/\1/<CR>:nohlsearch<CR>`<
 
 " Select text in next/last parentheses
 onoremap <buffer> in( :<C-u>normal! f(vi(<CR>
