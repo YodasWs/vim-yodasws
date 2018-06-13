@@ -8,8 +8,8 @@ func! s:eatchar(pat) abort
 endfunc
 
 " Add/Remove Line Comment
-nnoremap <buffer> <localleader>c v2l<Esc>I" <Esc>`>
-nnoremap <buffer> <localleader>C v2h<Esc>:s/^\(\s*\)"\s\?/\1/<CR>:nohlsearch<CR>`<
+nnoremap <buffer> <localleader>c m<m><Esc>I" <Esc>`>
+nnoremap <buffer> <localleader>C m<m><Esc>:s/^\(\s*\)"\s\?/\1/<CR>:nohlsearch<CR>`<
 
 " Folding
 setlocal foldmethod=marker
