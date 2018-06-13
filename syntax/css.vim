@@ -36,7 +36,7 @@ syn keyword cssMediaAnd contained and nextgroup=cssMediaExp,cssMediaNot skipwhit
 syn keyword cssMediaNot contained not nextgroup=cssMediaExp,cssMediaType,cssMediaError skipwhite skipnl
 syn keyword cssMediaType contained screen print speech all nextgroup=cssMediaComma,cssMediaAnd skipwhite skipnl
 
-syn region cssMediaExp contained start="(" end=")" contains=cssMediaFeat,cssMediaError oneline
+syn region cssMediaExp contained start="(" end=")" contains=cssMediaFeat,cssMediaError,cssValue.* oneline
 
 syn keyword cssMediaFeat contained scan grid orientation
 syn match cssMediaFeat contained "\<\(\(max\|min\)-\)\=\(\(width\|height\|aspect-ratio\)\|color\(-index\)\=\|monochrome\|resolution\)\>"
