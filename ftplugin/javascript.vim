@@ -8,8 +8,9 @@ endfunc
 
 " Syntax Code Completion
 iabbrev <silent> <buffer> if if (<C-R>=<SID>eatchar('\s')<CR>
+iabbrev <silent> <buffer> for for (<C-R>=<SID>eatchar('\s')<CR>
 iabbrev <silent> <buffer> while while (<C-R>=<SID>eatchar('\s')<CR>
-iabbrev <silent> <buffer> do do {} while ();<Esc>F}i<CR><Esc>O<C-R>=<SID>eatchar('\s')<CR>
+" iabbrev <silent> <buffer> do do {} while ();<Esc>F}i<CR><Esc>O<C-R>=<SID>eatchar('\s')<CR>
 iabbrev <silent> <buffer> switch switch (<C-R>=<SID>eatchar('\s')<CR>
 
 " Wrap text in single quotes
