@@ -66,8 +66,8 @@ endif
 function! VimEnter()
   if has("browse") == 1
     let g:SessionFileName=""
-    nnoremap <F4> :let g:SessionFileName=browse(0, "Select Session", "/Users/zk2nxd0/Vim/vimfiles/sessions/", "") <CR>:if g:SessionFileName != ""<CR>exe "source " . g:SessionFileName<CR>endif<CR><CR>
-    nnoremap <C-F4> :browse mks! /Users/zk2nxd0/Vim/vimfiles/sessions/<CR>
+    nnoremap <silent> <F4> :let g:SessionFileName=browse(0, "Select Session", "/Users/[user]/Vim/vimfiles/sessions/", "") <CR>:if g:SessionFileName != ""<CR>exe "source " . g:SessionFileName<CR>endif<CR><CR>
+    nnoremap <C-F4> :browse mks! /Users/[user]/Vim/vimfiles/sessions/<CR>
     nnoremap <C-S-F4> :exe "mks! " . g:SessionFileName<CR>
   endif
 endfunction
@@ -91,18 +91,10 @@ nnoremap <C-N> /^\(<<<<<<<\\|=======\\|>>>>>>>\)<CR>
 vnoremap <silent> // :<C-U><ESC>gvy/<C-R><C-R>=escape(@",'\')<CR><CR>gV
 
 " Destroy Trailing Whitespace
-nnoremap <Leader>w :%s/\s\+$//g<CR>:nohlsearch<CR>
+nnoremap <silent> <Leader>w :%s/\s\+$//g<CR>:nohlsearch<CR>
 
 " Join Lines
 nnoremap <Leader>j Jx
-
-" Useful Variables {{{1
-cnoremap /cop copy\site\secure-mycomm-ecc\module-specific\
-cnoremap /hln components\modules\secure-mycomm-hln\hln-
-cnoremap /smc components\modules\secure-mycommunications\
-cnoremap /red components\utilities\secure-mycomm-hln\hln-redux\1.1.0\js\
-cnoremap /util components\utilities\secure-mycomm
-cnoremap /ecc components\modules\secure-mycomm-ecc\
 
 " Autocommands {{{1
 if has("autocmd")
@@ -117,48 +109,3 @@ if has("autocmd")
 
   " }}}2
 endif
-
-" Functions {{{1
-" MyDiff {{{2
-set diffexpr=MyDiff()
-function! MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      if empty(&shellxquote)
-        let l:shxq_sav = ''
-        set shellxquote&
-      endif
-      let cmd = '"' . $VIMRUNTIME . '\diff"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
-  if exists('l:shxq_sav')
-    let &shellxquote=l:shxq_sav
-  endif
-endfunction
-
-" }}}2
-
-" Syntax on {{{1
-syntax on
-try
-  " source C:\Users\zk2nxd0\Vim\vimfiles\pack\yodasws\start\yodasws-vim\font.vim
-catch
-  try
-    " source /C/Users/zk2nxd0/Vim/vimfiles/pack/yodasws/start/yodasws-vim/font.vim
-  catch
-  endtry
-endtry
