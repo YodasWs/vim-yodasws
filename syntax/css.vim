@@ -28,13 +28,13 @@ syn match cssProp contained "\<text-indent:"he=e-1
 
 " Build Media Query Rule
 syn match cssMedia "@media\>" contained
-syn region cssMediaQueryList start="@media\>"hs=s end="[^#]{\@=" contains=cssMedia,cssMediaType,cssMediaError,cssMediaExp,cssMediaNot,cssMediaAnd,cssMediaComma,sassVariable nextgroup=cssMediaBlock skipwhite skipnl
+syn region cssMediaQueryList start="@media\>"hs=s end="[^#]{\@=" contains=cssMedia,cssMediaType,cssMediaError,cssMediaExp,cssMediaNot,cssMediaAndOr,cssMediaComma,sassVariable nextgroup=cssMediaBlock skipwhite skipnl
 syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass,cssSelectorOp,cssSelectorOp2,cssAttributeSelector fold skipwhite skipnl
 
 syn match cssMediaComma "," nextgroup=cssMediaType,cssMediaNot,cssMediaError,cssMediaExp skipwhite skipnl
-syn keyword cssMediaAnd contained and nextgroup=cssMediaExp,cssMediaNot skipwhite skipnl
+syn keyword cssMediaAndOr contained and or nextgroup=cssMediaExp,cssMediaNot skipwhite skipnl
 syn keyword cssMediaNot contained not nextgroup=cssMediaExp,cssMediaType,cssMediaError skipwhite skipnl
-syn keyword cssMediaType contained screen print speech all nextgroup=cssMediaComma,cssMediaAnd skipwhite skipnl
+syn keyword cssMediaType contained screen print speech all nextgroup=cssMediaComma,cssMediaAndOr skipwhite skipnl
 
 syn region cssMediaExp contained start="(" end=")" contains=cssMediaFeat,cssMediaError,cssValue.* oneline
 
@@ -92,10 +92,9 @@ syn keyword cssAttr contained column row wrap
 " @Supports "
 
 syn match cssSupports "@supports\>" nextgroup=cssSupportsCheck,cssSupportsNot
-syn region cssSupportsList start="@supports\>"hs=s end="[^#]{\@=" contains=cssSupports,cssSupportsCheck,cssSupportsNot,cssSupportsAnd,cssSupportsOr,sassVariable nextgroup=cssBlock skipwhite skipnl
-syn region cssSupportsCheck contained start="(" end=")" contains=css.*Attr,css.*Prop,cssPrototype,cssColor,cssColorFunction,cssURL,cssStringQ,cssStringQQ,cssFunction oneline nextgroup=cssBlock,cssSupportsAnd,cssSupportsOr skipwhite skipnl
-syn keyword cssSupportsOr  contained or  nextgroup=cssSupportsCheck,cssSupportsNot
-syn keyword cssSupportsAnd contained and nextgroup=cssSupportsCheck,cssSupportsNot
+syn region cssSupportsList start="@supports\>"hs=s end="[^#]{\@=" contains=cssSupports,cssSupportsCheck,cssSupportsNot,cssSupportsAndOr,cssSupportsOr,sassVariable nextgroup=cssBlock skipwhite skipnl
+syn region cssSupportsCheck contained start="(" end=")" contains=css.*Attr,css.*Prop,cssPrototype,cssColor,cssColorFunction,cssURL,cssStringQ,cssStringQQ,cssFunction oneline nextgroup=cssBlock,cssSupportsAndOr,cssSupportsOr skipwhite skipnl
+syn keyword cssSupportsAndOr contained and or nextgroup=cssSupportsCheck,cssSupportsNot
 syn keyword cssSupportsNot contained not nextgroup=cssSupportsCheck
 
 """""""""""""""""""""""""
@@ -212,19 +211,19 @@ if version >= 508
 	HiLink cssMediaType Type
 	HiLink cssMediaComma Normal
 	HiLink cssMediaFeat StorageClass
-	HiLink cssMediaAnd PreProc
-	HiLink cssMediaNot PreProc
+	HiLink cssMediaAndOr AndOrNot
+	HiLink cssMediaNot AndOrNot
 	HiLink cssMediaError Error
 	HiLink cssProp StorageClass
 	HiLink cssAttr Type
 	HiLink cssSupports atRule
-	HiLink cssSupportsOr Keyword
-	HiLink cssSupportsAnd Keyword
-	HiLink cssSupportsNot Keyword
+	HiLink cssSupportsAndOr AndOrNot
+	HiLink cssSupportsNot AndOrNot
 	HiLink cssPseudoClassId PreProc
 	HiLink cssPseudoClassLang PreProc
 	HiLink cssPseudoClassFunc PreProc
 	HiLink cssPseudoElementId PreProc
 	HiLink atRule Special
+	HiLink AndOrNot PreProc
 	delcommand HiLink
 endif
