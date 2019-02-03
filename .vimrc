@@ -6,14 +6,14 @@ set hlsearch incsearch ignorecase
 set encoding=utf-8 fileencoding=utf-8 nobomb
 set fileformat=unix
 if has("autocmd")
-  aug ff
-    au!
-    " au BufRead * if ! &readonly | set fileformat=unix nobomb
-  aug END
+	aug ff
+		au!
+		" au BufRead * if ! &readonly | set fileformat=unix nobomb
+	aug END
 endif
 
 " Tab Preferences {{{2
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
 " Vim Reading {{{2
 set number
@@ -46,29 +46,29 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Vim Tab-complete {{{2
-set wildmenu wildmode=longest:full,full
+set wildignorecase wildmenu wildmode=longest:full,full
 
 " Session Options {{{2
-set sessionoptions=buffers,curdir,folds,slash,tabpages,unix,winpos,winsize
+set sessionoptions=buffers,curdir,folds,slash,tabpages,unix
 
 " Set up keyboard shortcuts to open/save session files
 if has("autocmd")
-  aug sessions
-    au!
-    au VimEnter * call VimEnter()
-  aug END
+	aug sessions
+		au!
+		au VimEnter * call VimEnter()
+	aug END
 endif
 
 function! VimEnter()
-  if has("browse") == 1
-    let g:SessionFileName=""
-    nnoremap <silent> <F4> :let g:SessionFileName=browse(0, "Select Session", "$VIM/vimfiles/sessions/", "") <CR>:if g:SessionFileName != ""<CR>exe "source " . g:SessionFileName<CR>endif<CR><CR>
-    nnoremap <C-F4> :browse mks! $VIM/vimfiles/sessions/<CR>
-    nnoremap <C-S-F4> :exe "mks! " . g:SessionFileName<CR>
-  endif
+	if has("browse") == 1
+		let g:SessionFileName=""
+		nnoremap <silent> <F4> :let g:SessionFileName=browse(0, "Select Session", "$VIM/vimfiles/sessions/", "") <CR>:if g:SessionFileName != ""<CR>exe "source " . g:SessionFileName<CR>endif<CR><CR>
+		nnoremap <C-F4> :browse mks! $VIM/vimfiles/sessions/<CR>
+		nnoremap <C-S-F4> :exe "mks! " . g:SessionFileName<CR>
+	endif
 endfunction
 
-" Windows {{{2
+" Windows OS {{{2
 set guioptions-=tT
 set mouse=
 
@@ -95,16 +95,16 @@ nnoremap <Leader>j @='Jx'<CR>
 
 " Autocommands {{{1
 if has("autocmd")
-  " Global Settings {{{2
-  au!
-  " Maximize window
-  au GUIEnter * simalt ~x
-  " Go to last line
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") && &filetype != "gitcommit" | exe "normal! g'\"" | endif
-  " Flag that we're loading file from standard input
-  au StdinReadPre * let s:std_in=1
+	" Global Settings {{{2
+	au!
+	" Maximize window
+	au GUIEnter * simalt ~x
+	" Go to last line
+	au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") && &filetype != "gitcommit" | exe "normal! g'\"" | endif
+	" Flag that we're loading file from standard input
+	au StdinReadPre * let s:std_in=1
 
-  " }}}2
+	" }}}2
 endif
 
 " Let us turn things on {{{1
