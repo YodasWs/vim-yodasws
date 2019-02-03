@@ -1,7 +1,3 @@
-" Let us turn things on {{{1
-filetype plugin indent on
-syntax on
-
 " Options {{{1
 " Search {{{2
 set hlsearch incsearch ignorecase
@@ -76,6 +72,9 @@ endfunction
 set guioptions-=tT
 set mouse=
 
+" Font {{{2
+set guifont=Lucida_Console:h10:cANSI:qDRAFT
+
 " Easier command typing {{{1
 noremap ; :
 noremap : ;
@@ -107,3 +106,7 @@ if has("autocmd")
 
   " }}}2
 endif
+
+" Let us turn things on {{{1
+filetype plugin indent on
+syntax on
