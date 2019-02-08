@@ -29,6 +29,9 @@ set formatoptions+=cqo12rj
 set formatoptions-=t
 set nojoinspaces
 
+" Vim Diff {{{2
+set diffopt+=filler,iwhite,vertical
+
 " Vim Tabs {{{2
 set showtabline=2
 " set switchbuf=usetab,newtab
