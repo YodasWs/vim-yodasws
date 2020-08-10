@@ -8,7 +8,7 @@ set fileformat=unix
 if has("autocmd")
 	aug ff
 		au!
-		" au BufRead * if ! &readonly | set fileformat=unix nobomb
+		au BufNewFile,BufRead * if ! &readonly | set fileformat=unix nobomb | endif
 	aug END
 endif
 
@@ -50,6 +50,7 @@ nnoremap <C-H> <C-W><C-H>
 
 " Vim Tab-complete {{{2
 set wildignorecase wildmenu wildmode=longest:full,full
+set wildignore+=*~
 
 " Session Options {{{2
 set sessionoptions=buffers,curdir,folds,slash,tabpages,unix
@@ -78,11 +79,16 @@ set mouse=
 " Font {{{2
 set guifont=Lucida_Console:h10:cANSI:qDRAFT
 
-" Easier command typing {{{1
+" Better diff in Ubuntu on Windows 10
+hi DiffChange ctermfg=Black
+hi DiffAdd ctermfg=Black
+
+" Easier Commands {{{1
+" Easier Command Typing {{{2
 noremap ; :
 noremap : ;
 
-" Common Commands {{{1
+" Common Commands {{{2
 
 " Git Merge Conflicts
 nnoremap <C-N> /^\(<<<<<<<\\|=======\\|>>>>>>>\)<CR>
@@ -99,13 +105,15 @@ nnoremap <Leader>j @='Jx'<CR>
 " Autocommands {{{1
 if has("autocmd")
 	" Global Settings {{{2
-	au!
-	" Maximize window
-	au GUIEnter * simalt ~x
-	" Go to last line
-	au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") && &filetype != "gitcommit" | exe "normal! g'\"" | endif
-	" Flag that we're loading file from standard input
-	au StdinReadPre * let s:std_in=1
+	aug global
+		au!
+		" Maximize window
+		au GUIEnter * simalt ~x
+		" Go to last line
+		au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") && &filetype != "gitcommit" | exe "normal! g'\"" | endif
+		" Flag that we're loading file from standard input
+		au StdinReadPre * let s:std_in=1
+	aug END
 
 	" }}}2
 endif
