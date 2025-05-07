@@ -1,7 +1,7 @@
 " Vim syntax file
-" Language:	SVG (Scalable Vector Graphics)
-" Maintainer:	Sam Grundman <sam+vim@yodas.ws>
-" File Types:	.svg (used in Web and vector programs)
+" Language: SVG (Scalable Vector Graphics)
+" Maintainer: Samuel B Grundman (https://github.com/YodasWs)
+" File Types: .svg (used in Web and vector programs)
 
 " JavaScript {{{1
 unlet b:current_syntax

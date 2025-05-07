@@ -1,6 +1,6 @@
 " Vim syntax file
 " Language: PHP
-" Maintainer: "Samuel B Grundman" <sam+vim@yodas.ws>
+" Maintainer: Samuel B Grundman (https://github.com/YodasWs)
 " Filenames: *.php
 
 " PHP 5.1.2 Updates

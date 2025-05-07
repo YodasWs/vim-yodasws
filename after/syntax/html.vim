@@ -1,6 +1,6 @@
 " Vim syntax file
 " Language: HTML
-" Maintainer: "Samuel B Grundman" <sam+vim@yodas.ws>
+" Maintainer: Samuel B Grundman (https://github.com/YodasWs)
 
 " SVG {{{1
 unlet b:current_syntax

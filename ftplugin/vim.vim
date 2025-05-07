@@ -1,6 +1,6 @@
 " Vim filetype plugin file
-" Language:	Vim
-" Maintainer:	Sam Grundman <sam-vim@yodas.ws>
+" Language: Vim
+" Maintainer: Samuel B Grundman (https://github.com/YodasWs)
 
 func! s:eatchar(pat) abort
 	let c = nr2char(getchar(0))

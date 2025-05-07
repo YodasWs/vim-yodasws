@@ -1,6 +1,6 @@
 " Vim syntax file
 " Language: CSS
-" Maintainer: "Samuel B Grundman" <sam+vim@yodas.ws>
+" Maintainer: Samuel B Grundman (https://github.com/YodasWs)
 " Filenames: *.css
 
 " Don't run this file again!
