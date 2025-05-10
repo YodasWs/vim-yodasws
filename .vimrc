@@ -128,6 +128,7 @@ if has("autocmd")
 		au ModeChanged *:n silent !echo -ne "\e[1 q"
 		au ModeChanged *:v silent !echo -ne "\e[3 q"
 		au ModeChanged *:i silent !echo -ne "\e[5 q"
+		au ModeChanged *:c silent !echo -ne "\e[5 q"
 		au ModeChanged *:R silent !echo -ne "\e[3 q"
 		au ModeChanged *:R set cursorlineopt=number
 		au ModeChanged R:* set cursorlineopt=line | redraw
