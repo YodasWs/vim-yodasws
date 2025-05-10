@@ -116,6 +116,16 @@ if has("autocmd")
 	aug END
 
 	" }}}2
+
+	" Cursor Settings {{{2
+	aug cursor
+		au!
+		au VimEnter * silent !echo -ne "\e[1 q"
+		au InsertEnter * silent !echo -ne "\e[5 q"
+		au InsertLeave * silent !echo -ne "\e[1 q"
+		au VimLeave * silent !echo -ne "\e[5 q"
+	aug END
+	" }}} 2
 endif
 
 " Let us turn things on {{{1
