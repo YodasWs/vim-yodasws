@@ -14,6 +14,7 @@ endif
 
 " Tab Preferences {{{2
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+let g:sass_recommended_style = 0
 
 " Vim Reading {{{2
 set number
