@@ -131,11 +131,15 @@ if has("autocmd")
 		au ModeChanged *:c silent !echo -ne "\e[5 q"
 		au ModeChanged *:R silent !echo -ne "\e[3 q"
 		au ModeChanged *:R set cursorlineopt=number
-		au ModeChanged R:* set cursorlineopt=line | redraw
+		au ModeChanged R:* set cursorlineopt=both | redraw
 		au VimLeave * silent !echo -ne "\e[5 q"
 	aug END
 	" }}} 2
 endif
+
+" Digraphs {{{1
+digraph H) 7722
+digraph h) 7723
 
 " Let us turn things on {{{1
 filetype plugin indent on
