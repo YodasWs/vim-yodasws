@@ -1,6 +1,6 @@
 " Options {{{1
 " Search {{{2
-set hlsearch incsearch ignorecase
+set hlsearch incsearch ignorecase showcmd
 
 " File Encoding {{{2
 set encoding=utf-8 fileencoding=utf-8 nobomb
