@@ -17,6 +17,9 @@ runtime! syntax/css.vim
 
 unlet b:local_css
 
+" Add hyphen to allowed keyword characters
+syn iskeyword @,48-52,_,192-255,-
+
 """"""""""""""""""""""""""
 " Fixup Vim's CSS Syntax "
 syn match cssProp contained "\<text-indent:"he=e-1
@@ -28,38 +31,44 @@ syn match cssProp contained "\<text-indent:"he=e-1
 
 " Build Media Query Rule
 syn match cssMedia "@media\>" contained
-syn region cssMediaQueryList start="@media\>"hs=s end="[^#]{\@=" contains=cssMedia,cssMediaType,cssMediaError,cssMediaExp,cssMediaNot,cssMediaAndOr,cssMediaComma,sassVariable nextgroup=cssMediaBlock skipwhite skipnl
+syn region cssMediaQueryList start="@media\>"hs=s end="[^#]{\@=" contains=cssMedia,cssMediaType,cssMediaError,cssMediaCondition,cssMediaNot,cssMediaAndOr,cssMediaComma,sassVariable nextgroup=cssMediaBlock skipwhite skipnl
 syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass,cssSelectorOp,cssSelectorOp2,cssAttributeSelector fold skipwhite skipnl
 
-syn match cssMediaComma "," nextgroup=cssMediaType,cssMediaNot,cssMediaError,cssMediaExp skipwhite skipnl
-syn keyword cssMediaAndOr contained and or nextgroup=cssMediaExp,cssMediaNot skipwhite skipnl
-syn keyword cssMediaNot contained not nextgroup=cssMediaExp,cssMediaType,cssMediaError skipwhite skipnl
+syn match cssMediaComma "," nextgroup=cssMediaType,cssMediaNot,cssMediaError,cssMediaCondition skipwhite skipnl
+syn keyword cssMediaAndOr contained and or nextgroup=cssMediaCondition,cssMediaNot skipwhite skipnl
+syn keyword cssMediaNot contained not nextgroup=cssMediaCondition,cssMediaType,cssMediaError skipwhite skipnl
 syn keyword cssMediaType contained screen print speech all nextgroup=cssMediaComma,cssMediaAndOr skipwhite skipnl
 
-syn region cssMediaExp contained start="(" end=")" contains=cssMediaFeat,cssMediaError,cssValue.* oneline
+syn region cssMediaCondition contained start="(" end=")" contains=cssMediaFeat,cssMediaProp,cssMediaAndOr,cssMediaNot,cssMediaCondition,cssMediaError,cssValue.* oneline
 
 syn keyword cssMediaFeat contained scan grid orientation
 syn match cssMediaFeat contained "\<\(\(max\|min\)-\)\=\(\(width\|height\|aspect-ratio\)\|color\(-index\)\=\|monochrome\|resolution\)\>"
+syn keyword cssValueMedia contained landscape portrait progressive interlace hover
+" Media Queries Level 4
+syn keyword cssMediaFeat contained scripting update color-gamut
 syn match cssMediaFeat contained "\<\(any-\)\=\(pointer\|hover\)\>"
-syn match cssMediaFeat contained "\<display-mode\>"
-" CSS 4
-syn keyword cssMediaFeat contained scripting
-syn match cssMediaFeat contained "\<\(light-level\|inverted-colors\|update-frequency\)\>"
 syn match cssMediaFeat contained "\<overflow-\(inline\|block\)\>"
-
-syn keyword cssValueMedia contained landscape portrait
+syn keyword cssValueMedia contained none srgb p3 rec2020 coarse fine initial-only enabled slow fast
+" Media Queries Level 5
+syn keyword cssMediaFeat contained display-mode device-posture forced-colors inverted-colors
+syn keyword cssValueMedia contained browser fullscreen minimal-ui picture-in-picture standalone windows-control-overlay
+syn keyword cssValueMedia contained active continuous folded inverted
+syn match cssMediaFeat contained "\<prefers-\(reduced-\(data\|motion\|transparency\)\|contrast\|color-scheme\)\>"
+syn match cssMediaFeat contained "\<\(video-\)\=dynamic-range\>"
+syn match cssMediaFeat contained "\<\(vertical\|horizontal\)-viewport-segments\>"
+syn keyword cssValueMedia contained no-preference reduce more less custom light dark standard high
 
 """"""""""
 " HTML 5 "
 
 syn keyword cssTagName article aside audio bdi canvas command data
 syn keyword cssTagName datalist details dialog embed figcaption figure footer
-syn keyword cssTagName header keygen main mark menu menuitem meter nav
+syn keyword cssTagName header hgroup keygen main mark menu menuitem meter nav
 syn keyword cssTagName output picture progress rt rp ruby section
 syn keyword cssTagName source summary time track video wbr
 
 """""""""""""""""""
-" CSS3 Properties "
+" SS3 Properties "
 
 syn keyword cssProp contained transition transform opacity resize
 syn match cssProp contained "\<animation\(-\(direction\|delay\|duration\|fill-mode\|iteration-count\|name\|play-state\|timing-function\)\)\=\>"
@@ -173,15 +182,11 @@ syn keyword cssColor contained midnightblue mintcream mistyrose moccasin navajow
 syn keyword cssColor contained oldlace olivedrab orange orangered orchid
 syn match cssColor contained "\<pale\(goldenrod\|green\|turquoise\|violetred\)\>"
 syn keyword cssColor contained papayawhip peachpuff peru pink plum powderblue
-syn keyword cssColor contained rosybrown royalblue saddlebrown salmon sandybrown
-syn keyword cssColor contained seagreen seashell sienna skyblue slateblue
+syn keyword cssColor contained rosybrown royalblue rebeccapurple saddlebrown salmon
+syn keyword cssColor contained sandybrown seagreen seashell sienna skyblue slateblue
 syn keyword cssColor contained slategray slategrey snow springgreen steelblue tan
 syn keyword cssColor contained thistle tomato turquoise violet wheat
 syn keyword cssColor contained whitesmoke yellowgreen
-
-""""""""""""""
-" New Colors "
-syn keyword cssColor contained rebeccapurple
 
 """"""""""""""""""""""""""""""""
 " Generic CSS Block for @rules "
@@ -207,7 +212,7 @@ if version >= 508
 	HiLink cssObsolete Error
 	HiLink cssError Error
 	HiLink cssMedia atRule
-	HiLink cssMediaExp Delimiter
+	HiLink cssMediaCondition Delimiter
 	HiLink cssMediaType Type
 	HiLink cssMediaComma Normal
 	HiLink cssMediaFeat StorageClass
