@@ -5,3 +5,5 @@
 " Filenames: *.scss
 
 syn region sassInclude start="@use" end=";\|$" contains=scssComment,cssStringQ,cssStringQQ,cssURL,cssUnicodeEscape,cssMediaType
+
+runtime! <sfile>:p:h/css.vim
