@@ -29,6 +29,8 @@ syn keyword htmlArg contained min max multiple pattern
 syn keyword htmlArg contained required spellcheck novalidate
 syn keyword htmlArg contained form formnovalidate formaction formenctype formmethod formtarget
 syn match   htmlArg contained "\<data-[0-9A-Za-z-]\+"
+syn keyword htmlTagName contained data dialog hgroup progress search slot template
+syn keyword htmlTagNameError contained containedin=htmlTagN rb rtc
 
 " Microdata {{{1
 syn keyword htmlArg contained itemscope itemprop itemtype
