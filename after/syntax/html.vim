@@ -1,6 +1,7 @@
 " Vim syntax file
 " Language: HTML
 " Maintainer: Samuel B Grundman (https://github.com/YodasWs)
+" File Types: .html, .htm
 
 " SVG {{{1
 unlet b:current_syntax
