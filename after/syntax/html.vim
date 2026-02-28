@@ -15,8 +15,8 @@ syn keyword htmlTagNameError contained containedin=htmlTagN layer ilayer nolayer
 syn keyword htmlTagNameError contained containedin=htmlTagN blink marquee tt xmp
 
 " Obsolete Attributes {{{2
-syn match   htmlArgError contained "\<margin\(bottom\|height\|left\|right\|top\|width\)\>"
-syn keyword htmlArgError contained align alink background cellspacing rev
+syn match   htmlArgError contained containedin=htmlTag "\<margin\(bottom\|height\|left\|right\|top\|width\)\>"
+syn keyword htmlArgError contained containedin=htmlTag align alink background cellspacing rev
 
 " HTML5 {{{1
 syn keyword htmlTagName contained article aside figcaption figure footer header main nav section time
@@ -37,3 +37,4 @@ syn keyword htmlArg contained itemscope itemprop itemtype
 
 " Highlight {{{1
 hi def link htmlTagNameError Error
+hi def link htmlArgError Error
